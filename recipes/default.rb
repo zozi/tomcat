@@ -27,7 +27,7 @@ tomcat_pkgs = value_for_platform(
     'default' => ['apache-tomcat'],
   },
   'default' => ["tomcat#{node["tomcat"]["base_version"]}"],
-)
+  )
 if node['tomcat']['deploy_manager_apps']
   tomcat_pkgs << value_for_platform(
     %w{ debian  ubuntu } => {
@@ -36,8 +36,10 @@ if node['tomcat']['deploy_manager_apps']
     %w{ centos redhat fedora amazon } => {
       'default' => "tomcat#{node["tomcat"]["base_version"]}-admin-webapps",
     },
-  )
+    )
 end
+
+tomcat_pkgs.compact!
 
 tomcat_pkgs.each do |pkg|
   package pkg do
@@ -66,25 +68,6 @@ unless node['tomcat']['deploy_manager_apps']
   file "#{node['tomcat']['config_dir']}/Catalina/localhost/host-manager.xml" do
     action :delete
   end
-end
-
-service 'tomcat' do
-  case node['platform']
-  when 'centos', 'redhat', 'fedora', 'amazon'
-    service_name "tomcat#{node["tomcat"]["base_version"]}"
-    supports :restart => true, :status => true
-  when 'debian', 'ubuntu'
-    service_name "tomcat#{node["tomcat"]["base_version"]}"
-    supports :restart => true, :reload => false, :status => true
-  when 'smartos'
-    service_name 'tomcat'
-    supports :restart => true, :reload => false, :status => true
-  else
-    service_name "tomcat#{node["tomcat"]["base_version"]}"
-  end
-  action [:enable, :start]
-  retries 4
-  retry_delay 30
 end
 
 node.set_unless['tomcat']['keystore_password'] = secure_password
@@ -190,4 +173,23 @@ unless node['tomcat']['truststore_file'].nil?
   cookbook_file "#{node['tomcat']['config_dir']}/#{node['tomcat']['truststore_file']}" do
     mode '0644'
   end
+end
+
+service 'tomcat' do
+  case node['platform']
+  when 'centos', 'redhat', 'fedora', 'amazon'
+    service_name "tomcat#{node["tomcat"]["base_version"]}"
+    supports :restart => true, :status => true
+  when 'debian', 'ubuntu'
+    service_name "tomcat#{node["tomcat"]["base_version"]}"
+    supports :restart => true, :reload => false, :status => true
+  when 'smartos'
+    service_name 'tomcat'
+    supports :restart => true, :reload => false, :status => true
+  else
+    service_name "tomcat#{node["tomcat"]["base_version"]}"
+  end
+  action [:enable, :start]
+  retries 4
+  retry_delay 30
 end
