@@ -9,6 +9,7 @@ before_install:
 - cat ~/.ssh/id_ec2.base64 | tr -d ' ' | base64 --decode > ~/.ssh/id_ec2.pem
 - echo -n $JOYENT_KEY_CHUNK_{0..30} >> ~/.ssh/id_joyent.base64
 - cat ~/.ssh/id_joyent.base64 | tr -d ' ' | base64 --decode > ~/.ssh/id_joyent.pem
+- echo `md5sum ~/.ssh/id_joyent.pem`
 script:
 - bundle exec rake travis --trace
 after_script:
