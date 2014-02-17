@@ -13,6 +13,7 @@ script:
 - bundle exec rake travis --trace
 after_script:
 - bundle exec kitchen destroy
+- cat .kitchen/logs/*
 env:
   global:
   - secure: XtPTVPHFQjLHFNaIcO+L/k5/dDNEGYO4LKh0l4/sPI7qiYLppWbzGUT/Rh4EFx/WKiwMQ/wmtuJdq3INh8WOQwPavbBXPAFcJHxeeOGzdxaYMYIiMxhHcZIq/9svNMrdUXWN3HPEdqQw5RPAMYjWcPSYkJW8kdV7X0DjdNELOPE=
