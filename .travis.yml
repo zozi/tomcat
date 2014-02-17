@@ -10,6 +10,7 @@ before_install:
 - echo -n $JOYENT_KEY_CHUNK_{0..30} >> ~/.ssh/id_joyent.base64
 - cat ~/.ssh/id_joyent.base64 | tr -d ' ' | base64 --decode > ~/.ssh/id_joyent.pem
 - echo `md5sum ~/.ssh/id_joyent.pem`
+- ls -la ~/.ssh
 script:
 - bundle exec rake travis --trace
 after_script:
@@ -102,7 +103,7 @@ env:
   - secure: dJOUQr+h+ieQMfcGcbhhmeoHwIrkYO2An31tGfTNJ58zRqxdemZW6V4rCioCXo3PEfZsD4i7X4s2ydx7GnwQJOvQ/B+Et+mtONZ5hP7WFTgUuDTTvqdGAnTIN/PIWZbNzM0uXVcD8W+SUz5mIQFLo2+mC0Sxs/eKW+Arow5z5MU=
   - secure: eYNolirKR7/Vkxyhms56Yj4RvK8cjks5OJI7FukCaN7lvRkVxlYKZUeIfFeurm7KtNRA0lKNAfSQyUrhwnqVUarL1jkRKht+A5l7Bzka5/2kDNC/ZhpFAvHo5DAqfVLdg/M2dYbZLIxp4mHJln+gaEUpJ3Y39rwAf3Nd1J9ur0s=
   - secure: yPdFrm0EFtsZaUty/NAidyL2slpyBxvcXttehefP755ogAC36Gj2Cusn1vbbSzEcWTqiZmZIoYemjR7rAVrENSmBk0TleeY5DDd06FhP+tvtrVFFPsEU8tfPAg6P8sZf5rR3DBapRfA3/4KH25brmMFzZ8X35pAuDKB7C0nPSAM=
-  - secure: U3zfLEGWFb+71rHKmMD0Lm6KYx+jtY8oVt/suqotdCy3r0J2rEtg4nD1o90ZwiO5+kjpdKbvbD/D9Wyp+FlIWqHKYqy9xqMIYbM9ZBnQPAhe7AWNADS72xv6b6XLMq1l5yNEv5uHmnkUe9N/otIVYzaYtuDd1bybn0WiU3vzDdY=
-  - secure: yfGskYZedkqVAyjc7U8Eg4/E2eOiVm9YIv4vYD8KRbWfF4c0n3h5et6ZoADjj5ECbvFxggZ9oWk7cN39eQKT5WNtedY5v/hiIx8NV3SocKh82TBERAKLA0iGKEFlFOx5PRItiofl1wmsHivNJC1DYi2fR0Gip3hZzuZuzikIgko=
-  - secure: ZPeFT0krWvumDCtuLsQtt0hoqblnJ3krIwM6XODx+PPozpwLKiBHVZHFgrGG+zbgB+ZdJ7LI7+X4sLRqliIQ4DU8GOAMFYC/d17g+BrjmY1HYqRACRr/a4jfbRXP9ZmK73Z6iwgi6hBUIiB7u5cM9iO+2wlw93ZG4TupIpBliRI=
-  - secure: 600i2oI1yawuWGPk+YPONu9WqFv9b3SSKciMyofSHb5QpQ7ZV4GizEKaI+dmmhMtNL4paQGvZorYVRGhwjo+zxSAxUJYNjjMGyEb2RpBBXQrGimsEQ6DYmqZbFKrfbR8ZUHmUY5crKWuWLXfdfBS76klwxnps7bR+Ho13sgBgoc=
+  - secure: fkXfo07/g8RdSKwngq6Tq0/RLBtaKWtl+w9alq2xxhOVT9TtqrXWjcqhfRMEuT+5UOT1qrn1kVIo7hJPSzqLIoYitgdnUFMltKdpuqKSn5KE7YX9RC3SyGjeb8uzIyHJBIvFH9fE757gh+RWpSqIsbXNQ5YaRyztEmfye7u0ulo=
+  - secure: fAoScdZwaeKntXnzLQtQrtawnpbqbxkzkU0k56OYOGclVoBZwbCapTi+Zz4fCowyDDpPTCj2oNVLjWtkWrjZ497wMpM1KVrdx0BfQWpLLF//bHaFoGnvoADGVyfj4ASgdkIlf4PAvRD29egCzA3NFl8XXNQWKYu1vRVThhNG/mc=
+  - secure: +dhqJAajV4tZnXqjApTfvPXT0YIn+l2gXSBkDJM+Yqj+c8me66MXwYFXpGSPywFubwG3z2KVQrohaYEOLIrv2EoX2VivCn0p8F7WaKhKdbahaHZ9XGOtqESD2wryrcU7ErTaGCjGzQgzOSARZqU6RbjSRSm6IG/uVwY7Z/405As=
+  - secure: tUWzCmRFfBXOVan5NACNq2uaPlzxGa2BDHdSMjVbkbkoUslfxRJrGe0IkqaatKnZsLVpmla9uMx0KC1V5Xp6/Ntjbxgzu5SZTWpWbZTKcKnjz/wJszZpphVKWtSAUSJnlFRrX5/fm5yP3rKEsyuEj8Z6dkTiCErSP9gUwhn0KFQ=
