@@ -1,4 +1,18 @@
 language: ruby
+bundler_args: --without kitchen_vagrant
+rvm:
+- 2.1.0
+before_install:
+- echo -n $DO_KEY_CHUNK_{0..30} >> ~/.ssh/id_do.base64
+- cat ~/.ssh/id_do.base64 | tr -d ' ' | base64 --decode > ~/.ssh/id_do.pem
+- echo -n $EC2_KEY_CHUNK_{0..30} >> ~/.ssh/id_ec2.base64
+- cat ~/.ssh/id_ec2.base64 | tr -d ' ' | base64 --decode > ~/.ssh/id_ec2.pem
+- echo -n $JOYENT_KEY_CHUNK_{0..30} >> ~/.ssh/id_joyent.base64
+- cat ~/.ssh/id_joyent.base64 | tr -d ' ' | base64 --decode > ~/.ssh/id_joyent.pem
+script:
+- bundle exec rake travis --trace
+after_script:
+- bundle exec kitchen destroy
 env:
   global:
   - secure: XtPTVPHFQjLHFNaIcO+L/k5/dDNEGYO4LKh0l4/sPI7qiYLppWbzGUT/Rh4EFx/WKiwMQ/wmtuJdq3INh8WOQwPavbBXPAFcJHxeeOGzdxaYMYIiMxhHcZIq/9svNMrdUXWN3HPEdqQw5RPAMYjWcPSYkJW8kdV7X0DjdNELOPE=
