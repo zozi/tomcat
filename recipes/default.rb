@@ -189,8 +189,8 @@ service 'tomcat' do
   else
     service_name "tomcat#{node['tomcat']['base_version']}"
   end
-  action [:enable, :start]
-  notifies :run, 'execute[wait for tomcat]'
+  action [:start, :enable]
+  notifies :run, 'execute[wait for tomcat]', :immediately
   retries 4
   retry_delay 30
 end
