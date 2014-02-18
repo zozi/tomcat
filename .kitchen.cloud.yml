@@ -15,76 +15,76 @@ provisioner:
   require_chef_omnibus: latest
 
 platforms:
-- name: centos-6.4
-  driver_plugin: digitalocean
-  driver_config:
-    image_id: 562354
-    flavor_id: 63
-    region_id: 4
-    ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
-    ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
+# - name: centos-6.4
+#   driver_plugin: digitalocean
+#   driver_config:
+#     image_id: 562354
+#     flavor_id: 63
+#     region_id: 4
+#     ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
+#     ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
 
-- name: amazon-2013.09
-  driver_plugin: ec2
-  driver_config:
-    image_id: ami-3be4bc52
-    username: ec2-user
-    ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
+# - name: amazon-2013.09
+#   driver_plugin: ec2
+#   driver_config:
+#     image_id: ami-3be4bc52
+#     username: ec2-user
+#     ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
 
-- name: debian-70
-  driver_plugin: digitalocean
-  driver_config:
-    image_id: 308287
-    flavor_id: 63
-    region_id: 4
-    ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
-    ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
-  run_list:
-  - recipe[apt]
+# - name: debian-70
+#   driver_plugin: digitalocean
+#   driver_config:
+#     image_id: 308287
+#     flavor_id: 63
+#     region_id: 4
+#     ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
+#     ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
+#   run_list:
+#   - recipe[apt]
 
-- name: ubuntu-1004
-  driver_plugin: digitalocean
-  driver_config:
-    image_id: 14097
-    flavor_id: 63
-    region_id: 4
-    ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
-    ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
-  run_list:
-  - recipe[apt]
+# - name: ubuntu-1004
+#   driver_plugin: digitalocean
+#   driver_config:
+#     image_id: 14097
+#     flavor_id: 63
+#     region_id: 4
+#     ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
+#     ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
+#   run_list:
+#   - recipe[apt]
 
-- name: ubuntu-1204
-  driver_plugin: digitalocean
-  driver_config:
-    image_id: 1505447
-    flavor_id: 63
-    region_id: 4
-    ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
-    ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
-  run_list:
-  - recipe[apt]
+# - name: ubuntu-1204
+#   driver_plugin: digitalocean
+#   driver_config:
+#     image_id: 1505447
+#     flavor_id: 63
+#     region_id: 4
+#     ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
+#     ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
+#   run_list:
+#   - recipe[apt]
 
-- name: ubuntu-1304
-  driver_plugin: digitalocean
-  driver_config:
-    image_id: 350076
-    flavor_id: 63
-    region_id: 4
-    ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
-    ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
-  run_list:
-  - recipe[apt]
+# - name: ubuntu-1304
+#   driver_plugin: digitalocean
+#   driver_config:
+#     image_id: 350076
+#     flavor_id: 63
+#     region_id: 4
+#     ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
+#     ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
+#   run_list:
+#   - recipe[apt]
 
-- name: ubuntu-1310
-  driver_plugin: digitalocean
-  driver_config:
-    image_id: 1505699
-    flavor_id: 63
-    region_id: 4
-    ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
-    ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
-  run_list:
-  - recipe[apt]
+# - name: ubuntu-1310
+#   driver_plugin: digitalocean
+#   driver_config:
+#     image_id: 1505699
+#     flavor_id: 63
+#     region_id: 4
+#     ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
+#     ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
+#   run_list:
+#   - recipe[apt]
 
 - name: smartos-1330
   driver_plugin: joyent

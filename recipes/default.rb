@@ -185,7 +185,7 @@ service 'tomcat' do
     supports :restart => true, :reload => false, :status => true
   when 'smartos'
     service_name 'tomcat'
-    supports :restart => true, :reload => false, :status => true
+    supports :restart => false, :reload => false, :status => true
   else
     service_name "tomcat#{node['tomcat']['base_version']}"
   end
