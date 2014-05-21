@@ -134,6 +134,9 @@ if node['tomcat']['ssl_cert_file'].nil?
     notifies :restart, 'service[tomcat]'
   end
 else
+  node.set['tomcat']['keystore_file'] = 'keystore.p12'
+  node.set['tomcat']['keystore_type'] = 'pkcs12'
+
   script 'create_tomcat_keystore' do
     interpreter 'bash'
     cwd node['tomcat']['config_dir']
