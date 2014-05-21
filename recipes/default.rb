@@ -32,11 +32,11 @@ if node['tomcat']['deploy_manager_apps']
   tomcat_pkgs << value_for_platform(
     %w{ debian  ubuntu } => {
       'default' => "tomcat#{node['tomcat']['base_version']}-admin",
-    },    
+    },
     %w{ centos redhat fedora amazon scientific oracle } => {
       'default' => "tomcat#{node['tomcat']['base_version']}-admin-webapps",
     },
-    )
+  )
 end
 
 tomcat_pkgs.compact!
@@ -136,7 +136,6 @@ if node['tomcat']['ssl_cert_file'].nil?
 else
   script 'create_tomcat_keystore' do
     interpreter 'bash'
-    action :nothing
     cwd node['tomcat']['config_dir']
     code <<-EOH
       cat #{node['tomcat']['ssl_chain_files'].join(' ')} > cacerts.pem
@@ -148,24 +147,8 @@ else
        -password pass:#{node['tomcat']['keystore_password']} \
        -out #{node['tomcat']['keystore_file']}
     EOH
+    action :nothing
     notifies :restart, 'service[tomcat]'
-  end
-
-  cookbook_file "#{node['tomcat']['config_dir']}/#{node['tomcat']['ssl_cert_file']}" do
-    mode '0644'
-    notifies :run, 'script[create_tomcat_keystore]'
-  end
-
-  cookbook_file "#{node['tomcat']['config_dir']}/#{node['tomcat']['ssl_key_file']}" do
-    mode '0644'
-    notifies :run, 'script[create_tomcat_keystore]'
-  end
-
-  node['tomcat']['ssl_chain_files'].each do |cert|
-    cookbook_file "#{node['tomcat']['config_dir']}/#{cert}" do
-      mode '0644'
-      notifies :run, 'script[create_tomcat_keystore]'
-    end
   end
 end
 
