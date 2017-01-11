@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: tomcat
+# Cookbook Name:: tomcat6
 # Recipe:: default
 #
 # Copyright 2010, Opscode, Inc.
